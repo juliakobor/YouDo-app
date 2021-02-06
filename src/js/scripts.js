@@ -1,8 +1,8 @@
-let taskInputForm = document.getElementById("taskForm");
-let listItem;
-let todoList;
+    let taskInputForm = document.getElementById("taskForm");
+    let listItem;
+    let todoList = document.getElementById("listOfItems");
 
-taskInputForm.addEventListener("submit", event => {
+    taskInputForm.addEventListener("submit", event => {
     event.preventDefault();
 
     //Feliratok változása
@@ -10,37 +10,22 @@ taskInputForm.addEventListener("submit", event => {
     document.querySelector("h2").style.display="none";
 
     //Új elemek hozzáadása és kiíratása
-    todoList = document.createElement("ul");
     listItem=document.createElement("li");
-    document.getElementsByTagName("body")[0].appendChild(todoList);
     todoList.appendChild(listItem);
-    listItem.innerHTML=taskInputForm.item.value + " " + "<button><i class=\"far fa-trash-alt\"></i></button>";
-    listItem.classList.add("visibleItem");
+    listItem.innerHTML=taskInputForm.item.value + " " + "<i class=\"far fa-trash-alt\"></i>";
     });
 
     //Listaelem törlése
-    let valami = document.querySelectorAll("li");
-    valami.addEventListener("click", event => {
-
-    });
-
-
-
-    /*ARRAY MEGOLDÁS
-    todoItems.push();
-    document.getElementsByTagName("body")[0].appendChild(todoList);
-    for (let i = 0; i < todoItems.length; ++i) {
-        listItem.innerHTML = todoItems[i] + " " + "<button><i class=\"far fa-trash-alt\"></i></button>";
-        todoList.appendChild(listItem);
-        console.log(todoItems);
-    }});*/
-
-
-    /*//To-do item törlése
-    todoItems[0].addEventListener("click", event => {
+    todoList.addEventListener("click", event => {
         event.preventDefault();
-        todoItems.splice(0, 1);
-    })*/
+        if (event.target.firstChild === null) {
+        event.target.parentNode.remove();}
+    })
+
+
+
+
+
 
 
 
