@@ -14,7 +14,7 @@
     //Új elemek hozzáadása és kiíratása
     listItem=document.createElement("li");
     todoList.appendChild(listItem);
-    listItem.innerHTML=taskInputForm.item.value + " " + "<i class=\"far fa-trash-alt\"></i>";
+    listItem.innerHTML=taskInputForm.item.value + " " + "<i class=\"far fa-trash-alt\"></i>" + ", " + "Due date:"+ taskInputForm.date.value;
 
     //Tárolás a Local Storage-ben
     storageArray.push(taskInputForm.item.value);
