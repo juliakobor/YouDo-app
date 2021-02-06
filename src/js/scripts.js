@@ -1,6 +1,8 @@
     let taskInputForm = document.getElementById("taskForm");
     let todoList = document.getElementById("listOfItems");
     let listItem;
+    let storageArray = [];
+    let storageString;
 
     taskInputForm.addEventListener("submit", event => {
     event.preventDefault();
@@ -13,7 +15,22 @@
     listItem=document.createElement("li");
     todoList.appendChild(listItem);
     listItem.innerHTML=taskInputForm.item.value + " " + "<i class=\"far fa-trash-alt\"></i>";
-    });
+
+    //Tárolás a Local Storage-ben
+    storageArray.push(taskInputForm.item.value);
+    storageString = JSON.stringify(storageArray);
+    localStorage.setItem("List items", storageString);
+    })
+
+    //LocalStorage-ban tárolt elemek kiíratása
+    function showStoredItems () {
+        let restore = localStorage.getItem("List items");
+        document.getElementById("restoredItems").innerHTML = restore;
+        if (restore === null) {
+            document.getElementById("restoredItems").style.display="none";
+        }
+    }
+    showStoredItems();
 
     //Listaelem törlése
     todoList.addEventListener("click", event => {
@@ -34,9 +51,8 @@
             taskInputForm.create.disabled = false;
             event.target.classList.add("success");
             event.target.classList.remove("error");
-    }})
-
-
+        }
+    })
 
 
 
