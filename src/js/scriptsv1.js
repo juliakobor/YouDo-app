@@ -1,21 +1,10 @@
     let taskInputForm = document.getElementById("taskForm");
     let todoList = document.getElementById("listOfItems");
     let listItem;
-    let storageArray = [];
-    let storageString;
 
-    taskInputForm.addEventListener("submit", event => {
-    event.preventDefault();
-
-    //Feliratok változása
-    document.querySelector("h1").innerText="My first YouDo list";
-    document.querySelector("h2").style.display="none";
-
-    //Új elemek hozzáadása és kiíratása
-    listItem=document.createElement("li");
-    todoList.appendChild(listItem);
-    listItem.innerHTML=taskInputForm.item.value + " " + "<i class=\"far fa-trash-alt\"></i>" + ", " + "Due date:" + " " +
-    taskInputForm.date.value + ", " + "Priority:" + " " + taskInputForm.priority.value;
+    const storageArray = [];
+    const storageString;
+    sho
     //Tárolás a Local Storage-ben
     storageArray.push(taskInputForm.item.value);
     storageString = JSON.stringify(storageArray);
@@ -31,6 +20,23 @@
         }
     }
     showStoredItems();
+
+    let restoredItems = localStorage.getItem("List items");
+    restoredItems += ", " + taskInputForm.item.value;
+
+    //Új task létrehozása
+    taskInputForm.addEventListener("submit", event => {
+    event.preventDefault();
+
+    //Feliratok változása
+    document.querySelector("h1").innerText="My first YouDo list";
+    document.querySelector("h2").style.display="none";
+
+    //Új elemek hozzáadása és kiíratása
+    listItem=document.createElement("li");
+    todoList.appendChild(listItem);
+    listItem.innerHTML=taskInputForm.item.value + " " + "<i class=\"far fa-trash-alt\"></i>" + ", " + "Due date:" + " " +
+    taskInputForm.date.value + ", " + "Priority:" + " " + taskInputForm.priority.value;
 
     //Listaelem törlése
     todoList.addEventListener("click", event => {

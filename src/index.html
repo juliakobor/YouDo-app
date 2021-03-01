@@ -11,21 +11,22 @@
 <div>
   <h1>Welcome to YouDo app</h1>
   <h2>You can add your chores and tasks here:</h2>
-  <form action="#" id="taskForm">
-    <input type="text" placeholder="Start typing here" name="item">
-    <input type="date" name="date" id="dateInput">
+  <form action="#" id="taskForm" >
+    <input type="text" placeholder="Start typing here" name="item"> <!-- name="item" elnevezes tipp: todoInputText -->
+    <input type="date" name="date">
     <label for="priority">Priority:</label>
     <select name="priority" id="priority">
       <option value="low">Low</option>
       <option value="medium">Medium</option>
       <option value="high">High</option>
     </select>
-    <input type="submit" value="Create" id="create">
+    <input type="submit" value="Create" id="create" disabled>
+  </form>
   </form>
   <ul id="listOfItems">
-    <li id="restoredItems"></li>
+    <!--<li id="restoredItems"></li>-->
   </ul>
 </div>
-  <script src="js/scripts.js"></script>
+  <script src="js/scriptsv2.js"></script>
 </body>
 </html>
