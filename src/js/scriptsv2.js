@@ -10,10 +10,9 @@ function getItemsFromStorage() {
 
 function showItems() {
     storageArray.forEach(item => {
-        addNewListItem(item.task + ", " + item.duedate + ", " + item.prior + " " + "priority");
+        addNewListItem(item.task + ", " + "Due date: " + item.duedate + ", " + "Priority: " + item.prio + ", " + "<i class=\"far fa-trash-alt\"></i>");
     })
 }
-
 showItems();
 
 function addNewListItem(content) {
@@ -25,21 +24,20 @@ function addNewListItem(content) {
 taskInputForm.addEventListener("submit", event => {
     event.preventDefault();
 
-    document.querySelector("h1").innerText = "My first YouDo list";
+    document.querySelector("h1").innerText = "My current YouDo list";
     document.querySelector("h2").style.display = "none";
 
-    let itemContent = taskInputForm.item.value + ", " + "Due date:" + " " +
-        taskInputForm.date.value + ", " + "Priority:" + " " + taskInputForm.priority.value + " " + "<i class=\"far fa-trash-alt\"></i>";
-    addNewListItem(itemContent);
+    addNewListItem(taskInputForm.item.value + ", " + "Due date:" + " " +
+        taskInputForm.date.value + ", " + "Priority:" + " " + taskInputForm.priority.value + ", " + "<i class=\"far fa-trash-alt\"></i>");
 
     let todoObject = {
         task: taskInputForm.item.value,
         duedate: taskInputForm.date.value,
-        prior: taskInputForm.priority.value
+        prio: taskInputForm.priority.value
     }
     storageArray.push(todoObject);
-    //storageArray.push(taskInputForm.item.value);
     localStorage.setItem("List items", JSON.stringify(storageArray));
+
 })
 
 todoList.addEventListener("click", event => {
@@ -62,6 +60,7 @@ taskInputForm.item.addEventListener("keyup", event => {
         event.target.classList.remove("error");
     }
 })
+
 
 
 
